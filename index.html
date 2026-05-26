@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake 2026</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0a0a12;
+        color: #f8f8ff;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        overflow: hidden;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      #game-container {
+        display: grid;
+        gap: 12px;
+        place-items: center;
+      }
+      #score-hud {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+      #game {
+        background: #0a0a12;
+        border: 1px solid #1a1a2a;
+        box-shadow: 0 0 24px rgba(80, 255, 200, 0.15);
+        image-rendering: pixelated;
+      }
+      #help {
+        font-size: 12px;
+        opacity: 0.55;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="game-container">
+      <div id="score-hud">
+        <span>SCORE <span id="score-current">0</span></span>
+        &nbsp;|&nbsp;
+        <span>HIGH <span id="score-high">0</span></span>
+      </div>
+      <canvas id="game" width="600" height="600"></canvas>
+      <div id="help">Space: start / pause &nbsp; Arrow keys or WASD: move &nbsp; R: restart (on gameover)</div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

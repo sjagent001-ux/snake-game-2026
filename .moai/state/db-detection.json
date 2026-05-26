@@ -1,0 +1,8 @@
+{
+  "detected": false,
+  "matched_keywords": [],
+  "source_files": [],
+  "scanned_at": "2026-05-25T00:00:00Z",
+  "tech_md_hash": "299d9b205e5a4f750810166172e5cb03aac3283e5eeeb0dd09f95b96c73e1fa1",
+  "notes": "Web game with localStorage only. No DB engine, ORM, or migration files. Confirmed by interview.md (Round 2 stack = TypeScript+Canvas+Vite, no backend) and tech.md (runtime dependencies: none, only browser APIs)."
+}
