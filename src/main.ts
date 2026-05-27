@@ -108,6 +108,7 @@ function bootstrap(): void {
     onRender: (alpha: number) => {
       renderer.render(alpha);
       updateScoreHud(scoreCalculator);
+      updateGameStatus(stateMachine);
     },
   });
   gameLoop.start();
@@ -125,6 +126,34 @@ function updateScoreHud(scoreCalculator: ScoreCalculator): void {
   if (high !== null) {
     high.textContent = String(scoreCalculator.highScore);
   }
+}
+
+/**
+ * #game-status div 에 현재 게임 상태별 안내 텍스트를 갱신한다.
+ * idle / paused / gameover 시 사용자에게 가능한 키 입력을 명시적으로 안내해
+ * 'UI가 멈춘 것처럼 보이는' UX 갭을 해소한다. running 일 때는 CSS 로 숨겨진다.
+ */
+function updateGameStatus(stateMachine: StateMachine): void {
+  const el = document.getElementById("game-status");
+  if (el === null) return;
+  const state = stateMachine.currentState;
+  let text: string;
+  switch (state) {
+    case "idle":
+      text = "Press SPACE to start";
+      break;
+    case "running":
+      text = "";
+      break;
+    case "paused":
+      text = "PAUSED — Press SPACE to resume";
+      break;
+    case "gameover":
+      text = "GAME OVER — Press R to restart";
+      break;
+  }
+  if (el.textContent !== text) el.textContent = text;
+  if (el.getAttribute("data-state") !== state) el.setAttribute("data-state", state);
 }
 
 // DOM 준비 시점에 부트스트랩 — index.html 의 <script type="module"> 이 defer 동작이지만

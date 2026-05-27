@@ -44,6 +44,27 @@
         opacity: 0.55;
         text-align: center;
       }
+      #game-status {
+        min-height: 1.4em;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 0.9;
+      }
+      #game-status[data-state="gameover"] {
+        color: #ff6ec4;
+      }
+      #game-status[data-state="paused"] {
+        color: #7cffd9;
+      }
+      #game-status[data-state="idle"] {
+        color: #f8f8ff;
+        opacity: 0.7;
+      }
+      #game-status[data-state="running"] {
+        opacity: 0;
+      }
     </style>
   </head>
   <body>
@@ -54,6 +75,7 @@
         <span>HIGH <span id="score-high">0</span></span>
       </div>
       <canvas id="game" width="600" height="600"></canvas>
+      <div id="game-status" data-state="idle">Press SPACE to start</div>
       <div id="help">Space: start / pause &nbsp; Arrow keys or WASD: move &nbsp; R: restart (on gameover)</div>
     </main>
     <script type="module" src="/src/main.ts"></script>
